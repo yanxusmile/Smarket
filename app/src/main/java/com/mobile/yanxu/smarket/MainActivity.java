@@ -133,11 +133,11 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 case 0:
                     return new HomeFragment();
                 case 1:
-                    return new DiscoverFragment1();
+                    return new DiscoverFragment();
                 case 2:
-                    return new DiscoverFragment1();
+                    return new CartFragment();
                 case 3:
-                    return new DiscoverFragment1();
+                    return new MeFragment();
             }
             return null;
 
