@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager(), this);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -117,54 +117,54 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-//            return PlaceholderFragment.newInstance(position + 1);
-//            HomeFragment hf = new HomeFragment();
-            switch (position) {
-                case 0:
-                    return new HomeFragment();
-                case 1:
-                    return new DiscoverFragment();
-                case 2:
-                    return new CartFragment();
-                case 3:
-                    return new MeFragment();
-            }
-            return null;
-
-        }
-
-        @Override
-        public int getCount() {
-            // Show 4 total pages.
-            return 4;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-                case 3:
-                    return getString(R.string.title_section4).toUpperCase(l);
-            }
-            return null;
-        }
-    }
+//    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+//
+//        public SectionsPagerAdapter(FragmentManager fm) {
+//            super(fm);
+//        }
+//
+//        @Override
+//        public Fragment getItem(int position) {
+//            // getItem is called to instantiate the fragment for the given page.
+//            // Return a PlaceholderFragment (defined as a static inner class below).
+////            return PlaceholderFragment.newInstance(position + 1);
+////            HomeFragment hf = new HomeFragment();
+//            switch (position) {
+//                case 0:
+//                    return new HomeFragment();
+//                case 1:
+//                    return new DiscoverFragment();
+//                case 2:
+//                    return new CartFragment();
+//                case 3:
+//                    return new MeFragment();
+//            }
+//            return null;
+//
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            // Show 4 total pages.
+//            return 4;
+//        }
+//
+//        @Override
+//        public CharSequence getPageTitle(int position) {
+//            Locale l = Locale.getDefault();
+//            switch (position) {
+//                case 0:
+//                    return getString(R.string.title_section1).toUpperCase(l);
+//                case 1:
+//                    return getString(R.string.title_section2).toUpperCase(l);
+//                case 2:
+//                    return getString(R.string.title_section3).toUpperCase(l);
+//                case 3:
+//                    return getString(R.string.title_section4).toUpperCase(l);
+//            }
+//            return null;
+//        }
+//    }
 
     /**
      * A placeholder fragment containing a simple view.

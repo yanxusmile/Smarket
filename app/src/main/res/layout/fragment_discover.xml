@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="65dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Discoverlllll"
+        android:text="Discoverlllllasdasd"
         android:id="@+id/textView"
         android:layout_gravity="center_vertical"
         android:layout_weight="0.50" />
