@@ -1,14 +1,18 @@
 package com.mobile.yanxu.smarket;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ import java.util.ArrayList;
 public class CartFragment extends Fragment {
 
     private Button btnPay, btnClear;
+//    private ImageButton btnDeleteItem;
     private ListView cartLv;
     private ArrayList<String> strArr;
     private ArrayAdapter<String> adapter;
@@ -37,9 +42,10 @@ public class CartFragment extends Fragment {
 
         btnPay = (Button) rootView.findViewById(R.id.btnPay);
         btnClear = (Button) rootView.findViewById(R.id.btnClear);
+//        btnDeleteItem = (ImageButton) rootView.findViewById(R.id.btnDeleteItem);
         cartLv = (ListView) rootView.findViewById(R.id.listViewCart);
         strArr = new ArrayList<String>();
-        adapter = new ArrayAdapter<String>(getActivity(), R.layout.layout_cart_item, R.id.textView, strArr);
+        adapter = new MyArrayAdapter(getActivity(), strArr);
         cartLv.setAdapter(adapter);
 
         for(String s : values) {
@@ -48,7 +54,7 @@ public class CartFragment extends Fragment {
         }
 //        btnPay.setOnClickListener(new OnClickListener() {
 //            @Override
-//            public void onClick(View arg0) {
+//            public void onClick(View v) {
 //                strArr.add(0, "abd");
 //                adapter.notifyDataSetChanged();
 //            }
@@ -56,11 +62,21 @@ public class CartFragment extends Fragment {
 
         btnClear.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View arg0) {
+            public void onClick(View v) {
                 strArr.clear();
                 adapter.notifyDataSetChanged();
             }
         });
+
+//        btnDeleteItem.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                strArr.clear();
+//                adapter.notifyDataSetChanged();
+//            }
+//        });
+
+
 //        @Override
 //        protected void onListItemClick(ListView l, View v, int position, long id) {
 //            String item = (String) getListAdapter().getItem(position);
