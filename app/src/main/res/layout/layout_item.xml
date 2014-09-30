@@ -6,13 +6,12 @@
 
     <LinearLayout android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/LinearLayoutHeader"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ImageViewProduct"
+            android:id="@+id/ImageViewItem"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher"
@@ -21,20 +20,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/TextViewProductTitle"
+            android:id="@+id/TextViewItemName"
             android:layout_gravity="center"
             android:layout_margin="5dip"
             android:textSize="26dip"
             android:text="Dead or Alive" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewItemPrice"
+            android:layout_gravity="center"
+            android:layout_margin="5dip"
+            android:textSize="26dip"
+            android:text="Price" />
     </LinearLayout>
 
     <TextView
         android:layout_height="wrap_content"
-        android:id="@+id/TextViewProductDetails"
+        android:id="@+id/TextViewItemDetails"
         android:layout_width="fill_parent"
         android:layout_margin="5dip"
         android:layout_weight="0"
-        android:text="Product description" />
+        android:text="Item description" />
 
     <LinearLayout android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,14 +81,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Comment"
-            android:id="@+id/textView12" />
+            android:id="@+id/myComment" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_gravity="end"
-            android:id="@+id/btnPost"
+            android:id="@+id/btnComment"
             android:text="Comment" />
 
     </LinearLayout>

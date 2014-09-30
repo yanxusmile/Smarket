@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,20 +14,28 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by yanxu on 10/09/2014.
  */
 public class CartFragment extends Fragment {
 
-    private Button btnPay, btnClear;
-//    private ImageButton btnDeleteItem;
-    private ListView cartLv;
-    private ArrayList<String> strArr;
-    private ArrayAdapter<String> adapter;
+    private List<Item> mCartList;
+    private ItemAdapter mItemAdapter;
+
+//
+//    private List<Item> mItemList;
+//    private Button btnCheckout, btnRemoveFromCart;
+////    private ImageButton btnDeleteItem;
+//    private ListView cartLv;
+////    private ArrayList<String> strArr;
+//    private ArrayAdapter<String> adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,39 +43,84 @@ public class CartFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile" };
+        mCartList = ShoppingCartHelper.getCart();
 
-        btnPay = (Button) rootView.findViewById(R.id.btnPay);
-        btnClear = (Button) rootView.findViewById(R.id.btnClear);
-//        btnDeleteItem = (ImageButton) rootView.findViewById(R.id.btnDeleteItem);
-        cartLv = (ListView) rootView.findViewById(R.id.listViewCart);
-        strArr = new ArrayList<String>();
-        adapter = new MyArrayAdapter(getActivity(), strArr);
-        cartLv.setAdapter(adapter);
-
-        for(String s : values) {
-            strArr.add(s);
-            adapter.notifyDataSetChanged();
+        // Make sure to clear the selections
+        for(int i=0; i<mCartList.size(); i++) {
+            mCartList.get(i).selected = false;
         }
-//        btnPay.setOnClickListener(new OnClickListener() {
+
+        // Create the list
+        final ListView listViewCatalog = (ListView) rootView.findViewById(R.id.ListViewCatalog);
+        mItemAdapter = new ItemAdapter(mCartList, inflater, true);
+        listViewCatalog.setAdapter(mItemAdapter);
+
+        listViewCatalog.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                Item selectedItem = mCartList.get(position);
+                if(selectedItem.selected)
+                    selectedItem.selected = false;
+                else
+                    selectedItem.selected = true;
+
+                mItemAdapter.notifyDataSetInvalidated();
+
+            }
+        });
+
+        Button removeButton = (Button) rootView.findViewById(R.id.btnRemoveFromCart);
+        removeButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Loop through and remove all the Items that are selected
+                // Loop backwards so that the remove works correctly
+                for(int i=mCartList.size()-1; i>=0; i--) {
+
+                    if(mCartList.get(i).selected) {
+                        mCartList.remove(i);
+                    }
+                }
+                mItemAdapter.notifyDataSetChanged();
+            }
+        });
+
+//        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+//                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+//                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
+//                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
+//                "Android", "iPhone", "WindowsMobile" };
+//
+//        btnCheckout = (Button) rootView.findViewById(R.id.btnCheckout);
+//        btnRemoveFromCart = (Button) rootView.findViewById(R.id.btnRemoveFromCart);
+////        btnDeleteItem = (ImageButton) rootView.findViewById(R.id.btnDeleteItem);
+//        cartLv = (ListView) rootView.findViewById(R.id.listViewCart);
+//        strArr = new ArrayList<String>();
+//        adapter = new MyArrayAdapter(getActivity(), strArr);
+//        cartLv.setAdapter(adapter);
+//
+//        for(String s : values) {
+//            strArr.add(s);
+//            adapter.notifyDataSetChanged();
+//        }
+////        btnCheckout.setOnClickListener(new OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                strArr.add(0, "abd");
+////                adapter.notifyDataSetChanged();
+////            }
+////        });
+//
+//        btnRemoveFromCart.setOnClickListener(new OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                strArr.add(0, "abd");
+//                strArr.clear();
 //                adapter.notifyDataSetChanged();
 //            }
 //        });
-
-        btnClear.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strArr.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
 
 //        btnDeleteItem.setOnClickListener(new OnClickListener() {
 //            @Override

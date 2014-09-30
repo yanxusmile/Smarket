@@ -3,8 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:id="@+id/LinearLayoutItem">
+    android:layout_width="fill_parent" >
 
     <ImageView
         android:layout_margin="5dip"
@@ -22,9 +21,6 @@
         android:minLines="2"
         android:maxWidth="150dip" />
 
-
-
-
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -37,7 +33,7 @@
         android:layout_margin="5dip"
         android:textSize="20dip"
         android:text="Price"
-        android:id="@+id/textView" />
+        android:id="@+id/TextViewPrice" />
 
     <CheckBox
         android:layout_height="wrap_content"

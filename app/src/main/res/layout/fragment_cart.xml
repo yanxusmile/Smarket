@@ -8,16 +8,13 @@
 
     <ListView android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:id="@+id/ListViewCatalog"
+        android:id="@+id/listViewCart"
         android:layout_width="fill_parent"
-        android:background="#ffffff"
-        android:cacheColorHint="#ffffff"
         android:clickable="true"
         android:choiceMode="multipleChoice">
     </ListView>
 
     <LinearLayout
-        android:id="@+id/LinearLayout01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
