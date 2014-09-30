@@ -17,6 +17,7 @@
         android:layout_weight="1"
         android:id="@+id/ListViewCatalog"
         android:layout_width="fill_parent"
-        android:clickable="true" />
+        android:clickable="true"
+        android:cacheColorHint="#ffffff" />
 
 </LinearLayout>
