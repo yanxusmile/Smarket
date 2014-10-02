@@ -8,66 +8,24 @@ import android.graphics.drawable.Drawable;
 public class Item {
     public String name;
     public Drawable itemImage;
+	public double price;
     public String description;
     public String comments;
-    public double price;
+	public int likeNo;
+	public int shareNo;
+	public double ratingScore;
     public boolean selected;
 
-    public Item(String name, Drawable itemImage, String description, String comments,
-                   double price) {
-        this.name = name;
-        this.itemImage = itemImage;
-        this.description = description;
-        this.comments = comments;
-        this.price = price;
-    }
-
-//    public String getname() {
-//        return name;
-//    }
-//
-//    public Drawable getitemImage() {
-//        return itemImage;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public double getPrice() {
-//        return price;
-//    }
-//
-//    public String getComments() {
-//        return comments;
-//    }
-//
-//    public boolean isSelected() {
-//        return selected;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public void setItemImage(Drawable itemImage) {
-//        this.itemImage = itemImage;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
-//
-//    public void setComments(String comments) {
-//        this.comments = comments;
-//    }
-//
-//    public void setPrice(double price) {
-//        this.price = price;
-//    }
-//
-//    public void setSelected(boolean selected) {
-//        this.selected = selected;
-//    }
+	public Item(String name, Drawable itemImage, double price, String description, String comments,
+	            int likeNo, int shareNo, double ratingScore) {
+		this.name = name;
+		this.itemImage = itemImage;
+		this.price = price;
+		this.description = description;
+		this.comments = comments;
+		this.likeNo = likeNo;
+		this.shareNo = shareNo;
+		this.ratingScore = ratingScore;
+	}
 }
 

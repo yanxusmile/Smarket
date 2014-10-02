@@ -1,104 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent"
-    android:orientation="vertical">
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent"
+	android:orientation="vertical">
 
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ImageViewItemDetail"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher"
-            android:layout_margin="5dip" />
+		<ImageView
+			android:layout_width="150dp"
+			android:layout_height="150dp"
+			android:id="@+id/ImageViewItemDetail"
+			android:adjustViewBounds="true"
+			android:src="@drawable/ic_launcher"
+			android:layout_margin="5dip" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TextViewItemDetailName"
-            android:layout_gravity="center"
-            android:layout_margin="5dip"
-            android:textSize="26dip"
-            android:text="Dead or Alive" />
+		<LinearLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/TextViewItemDetailName"
+				android:layout_gravity="center"
+				android:layout_margin="5dip"
+				android:textSize="30dip"
+				android:text="Dead or Alive" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TextViewItemDetailPrice"
-            android:layout_gravity="center"
-            android:layout_margin="5dip"
-            android:textSize="26dip"
-            android:text="Price" />
-    </LinearLayout>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/TextViewItemDetailPrice"
+				android:layout_gravity="center"
+				android:layout_margin="5dip"
+				android:textSize="26dip"
+				android:text="Price" />
+		</LinearLayout>
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:id="@+id/TextViewItemDetailsDescription"
-        android:layout_width="fill_parent"
-        android:layout_margin="5dip"
-        android:layout_weight="0"
-        android:text="Item description" />
+	</LinearLayout>
 
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+	<TextView
+		android:layout_height="wrap_content"
+		android:id="@+id/TextViewItemDetailsDescription"
+		android:layout_width="fill_parent"
+		android:layout_margin="5dip"
+		android:layout_weight="0"
+		android:text="Item description" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnItemDetailLike" />
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:gravity="center" >
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnItemDetailShare"/>
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/btnItemDetailLike" />
 
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingItemDetailBar" />
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/btnItemDetailShare"/>
+
+		<RatingBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end"
+			android:id="@+id/ratingItemDetailBar" />
 
 
-    </LinearLayout>
+	</LinearLayout>
 
-    <ListView
-        android:layout_height="wrap_content"
-        android:layout_weight="0.1"
-        android:id="@+id/ListViewItemDetailComment"
-        android:layout_width="fill_parent"
-        android:clickable="true" />
+	<ListView
+		android:layout_height="wrap_content"
+		android:layout_weight="0.1"
+		android:id="@+id/ListViewItemDetailComment"
+		android:layout_width="fill_parent"
+		android:clickable="true" />
 
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Comment"
-            android:id="@+id/myItemDetailComment" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="myComment"
+			android:id="@+id/myItemDetailComment" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_gravity="end"
-            android:id="@+id/btnItemDetailComment"
-            android:text="Comment" />
 
-    </LinearLayout>
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dip"
+			android:layout_gravity="end"
+			android:id="@+id/btnItemDetailComment"
+			android:text="Comment" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_gravity="right"
-        android:id="@+id/btnAddToCart"
-        android:text="Add to Cart" />
+	</LinearLayout>
+
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="5dip"
+		android:layout_gravity="end"
+		android:id="@+id/btnAddToCart"
+		android:text="Add to Cart" />
 
 </LinearLayout>
