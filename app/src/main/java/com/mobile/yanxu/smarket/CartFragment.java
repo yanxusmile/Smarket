@@ -29,14 +29,6 @@ public class CartFragment extends Fragment {
     private List<Item> mCartList;
     private ItemAdapter mItemAdapter;
 
-//
-//    private List<Item> mItemList;
-//    private Button btnCheckout, btnRemoveFromCart;
-////    private ImageButton btnDeleteItem;
-//    private ListView cartLv;
-////    private ArrayList<String> strArr;
-//    private ArrayAdapter<String> adapter;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,11 +43,11 @@ public class CartFragment extends Fragment {
         }
 
         // Create the list
-        final ListView listViewCatalog = (ListView) rootView.findViewById(R.id.ListViewCatalog);
+        final ListView listViewCart = (ListView) rootView.findViewById(R.id.listViewCart);
         mItemAdapter = new ItemAdapter(mCartList, inflater, true);
-        listViewCatalog.setAdapter(mItemAdapter);
+        listViewCart.setAdapter(mItemAdapter);
 
-        listViewCatalog.setOnItemClickListener(new OnItemClickListener() {
+        listViewCart.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,

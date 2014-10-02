@@ -44,16 +44,18 @@ public class ItemAdapter extends BaseAdapter {
         final ViewItem item;
 
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.layout_cart_item,
+            convertView = mInflater.inflate(R.layout.layout_item_in_list,
                     null);
             item = new ViewItem();
 
             item.ItemImageView = (ImageView) convertView
-                    .findViewById(R.id.ImageViewItem);
+                    .findViewById(R.id.ImageViewItemCart);
 
-            item.ItemName = (TextView) convertView.findViewById(R.id.TextViewItemName);
+            item.ItemName = (TextView) convertView.findViewById(R.id.TextViewItemCartName);
 
-            item.ItemCheckbox = (CheckBox) convertView.findViewById(R.id.CheckBoxSelected);
+            item.ItemCheckbox = (CheckBox) convertView.findViewById(R.id.CheckBoxSelectedItemCart);
+
+	        item.ItemPrice = (TextView) convertView.findViewById(R.id.TextViewItemCartPrice);
 
             convertView.setTag(item);
         } else {
@@ -64,6 +66,7 @@ public class ItemAdapter extends BaseAdapter {
 
         item.ItemImageView.setImageDrawable(curItem.itemImage);
         item.ItemName.setText(curItem.name);
+	    item.ItemPrice.setText(String.valueOf(curItem.price));
 
         if(!mShowCheckbox) {
             item.ItemCheckbox.setVisibility(View.GONE);
@@ -82,6 +85,7 @@ public class ItemAdapter extends BaseAdapter {
     private class ViewItem {
         ImageView ItemImageView;
         TextView ItemName;
+	    TextView ItemPrice;
         CheckBox ItemCheckbox;
     }
 }

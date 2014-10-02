@@ -19,7 +19,7 @@ public class ItemDetailsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_item);
+        setContentView(R.layout.layout_item_detail);
 
         List<Item> catalog = ShoppingCartHelper.getCatalog(getResources());
         final List<Item> cart = ShoppingCartHelper.getCart();
@@ -28,13 +28,13 @@ public class ItemDetailsActivity extends Activity {
         final Item selectedItem = catalog.get(ItemIndex);
 
         // Set the proper image and text
-        ImageView ItemImageView = (ImageView) findViewById(R.id.ImageViewItem);
+        ImageView ItemImageView = (ImageView) findViewById(R.id.ImageViewItemDetail);
         ItemImageView.setImageDrawable(selectedItem.itemImage);
-        TextView ItemNameTextView = (TextView) findViewById(R.id.TextViewItemName);
+        TextView ItemNameTextView = (TextView) findViewById(R.id.TextViewItemDetailName);
         ItemNameTextView.setText(selectedItem.name);
-        TextView ItemPriceTextView = (TextView) findViewById(R.id.TextViewItemPrice);
+        TextView ItemPriceTextView = (TextView) findViewById(R.id.TextViewItemDetailPrice);
         ItemPriceTextView.setText(String.valueOf(selectedItem.price));
-        TextView ItemDetailsTextView = (TextView) findViewById(R.id.TextViewItemDetails);
+        TextView ItemDetailsTextView = (TextView) findViewById(R.id.TextViewItemDetailsDescription);
         ItemDetailsTextView.setText(selectedItem.description);
 
         Button addToCartButton = (Button) findViewById(R.id.btnAddToCart);

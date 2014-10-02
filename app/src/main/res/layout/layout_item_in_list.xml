@@ -7,7 +7,7 @@
 
     <ImageView
         android:layout_margin="5dip"
-        android:id="@+id/ImageViewItem"
+        android:id="@+id/ImageViewItemCart"
         android:layout_height="wrap_content"
         android:layout_width="100dip" />
 
@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
-        android:id="@+id/TextViewItem"
+        android:id="@+id/TextViewItemCartName"
         android:textSize="20dip"
         android:text="Item Name"
         android:minLines="2"
@@ -33,12 +33,12 @@
         android:layout_margin="5dip"
         android:textSize="20dip"
         android:text="Price"
-        android:id="@+id/TextViewPrice" />
+        android:id="@+id/TextViewItemCartPrice" />
 
     <CheckBox
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
-        android:id="@+id/CheckBoxSelected"
+        android:id="@+id/CheckBoxSelectedItemCart"
         android:focusable="false"
         android:clickable="false"
         android:layout_gravity="center"

@@ -7,6 +7,7 @@ import java.util.Vector;
 
 /**
  * Created by yanxu on 30/09/2014.
+ * need to modified to receive the data from server
  */
 public class ShoppingCartHelper {
 

@@ -11,7 +11,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ImageViewItem"
+            android:id="@+id/ImageViewItemDetail"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher"
@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/TextViewItemName"
+            android:id="@+id/TextViewItemDetailName"
             android:layout_gravity="center"
             android:layout_margin="5dip"
             android:textSize="26dip"
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/TextViewItemPrice"
+            android:id="@+id/TextViewItemDetailPrice"
             android:layout_gravity="center"
             android:layout_margin="5dip"
             android:textSize="26dip"
@@ -38,7 +38,7 @@
 
     <TextView
         android:layout_height="wrap_content"
-        android:id="@+id/TextViewItemDetails"
+        android:id="@+id/TextViewItemDetailsDescription"
         android:layout_width="fill_parent"
         android:layout_margin="5dip"
         android:layout_weight="0"
@@ -51,17 +51,17 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnLike" />
+            android:id="@+id/btnItemDetailLike" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnShare"/>
+            android:id="@+id/btnItemDetailShare"/>
 
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar" />
+            android:id="@+id/ratingItemDetailBar" />
 
 
     </LinearLayout>
@@ -69,7 +69,7 @@
     <ListView
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
-        android:id="@+id/ListViewComment"
+        android:id="@+id/ListViewItemDetailComment"
         android:layout_width="fill_parent"
         android:clickable="true" />
 
@@ -81,14 +81,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Comment"
-            android:id="@+id/myComment" />
+            android:id="@+id/myItemDetailComment" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_gravity="end"
-            android:id="@+id/btnComment"
+            android:id="@+id/btnItemDetailComment"
             android:text="Comment" />
 
     </LinearLayout>

@@ -15,7 +15,7 @@
     <ListView
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:id="@+id/ListViewCatalog"
+        android:id="@+id/ListViewHome"
         android:layout_width="fill_parent"
         android:clickable="true" />
 

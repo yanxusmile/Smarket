@@ -28,18 +28,14 @@ public class HomeFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-
-//        Context context = rootView.getContext();
-//        inflater = LayoutInflater.from(context);
-
+		//data of item list
         mItemList = ShoppingCartHelper.getCatalog(getResources());
 
         // Create the list
-        ListView listViewCatalog = (ListView) rootView.findViewById(R.id.ListViewCatalog);
-        listViewCatalog.setAdapter(new ItemAdapter(mItemList, inflater, false));
+        ListView ListViewHome = (ListView) rootView.findViewById(R.id.ListViewHome);
+        ListViewHome.setAdapter(new ItemAdapter(mItemList, inflater, false));
 
-        listViewCatalog.setOnItemClickListener(new OnItemClickListener() {
+        ListViewHome.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -49,6 +45,8 @@ public class HomeFragment extends Fragment {
                 startActivity(ItemDetailsIntent);
             }
         });
+
+
         return rootView;
     }
 
