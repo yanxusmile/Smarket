@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
 		//data of item list
-        mItemList = ShoppingCartHelper.getCatalog(getResources());
+        mItemList = LocalData.getCatalog(getResources());
 
         // Create the list
         ListView ListViewHome = (ListView) rootView.findViewById(R.id.ListViewHome);
@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 Intent ItemDetailsIntent = new Intent( getActivity(),ItemDetailsActivity.class);
-                ItemDetailsIntent.putExtra(ShoppingCartHelper.Item_INDEX, position);
+                ItemDetailsIntent.putExtra(LocalData.Item_INDEX, position);
                 startActivity(ItemDetailsIntent);
             }
         });

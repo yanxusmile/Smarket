@@ -35,7 +35,7 @@ public class CartFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        mCartList = ShoppingCartHelper.getCart();
+        mCartList = LocalData.getCart();
 
         // Make sure to clear the selections
         for(int i=0; i<mCartList.size(); i++) {

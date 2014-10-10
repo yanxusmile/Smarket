@@ -9,8 +9,8 @@
 		android:orientation="horizontal">
 
 		<ImageView
-			android:layout_width="150dp"
-			android:layout_height="150dp"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
 			android:id="@+id/ImageViewItemDetail"
 			android:adjustViewBounds="true"
 			android:src="@drawable/ic_launcher"
@@ -25,7 +25,7 @@
 				android:id="@+id/TextViewItemDetailName"
 				android:layout_gravity="center"
 				android:layout_margin="5dip"
-				android:textSize="30dip"
+				android:textSize="26sp"
 				android:text="Dead or Alive" />
 
 			<TextView
@@ -34,7 +34,7 @@
 				android:id="@+id/TextViewItemDetailPrice"
 				android:layout_gravity="center"
 				android:layout_margin="5dip"
-				android:textSize="26dip"
+				android:textSize="26sp"
 				android:text="Price" />
 		</LinearLayout>
 
@@ -67,45 +67,65 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="end"
-			android:id="@+id/ratingItemDetailBar" />
+			android:id="@+id/ratingItemDetailBar"
+			android:stepSize="1.0"
+			android:clickable="false"
+			android:isIndicator="true"
+			/>
 
 
 	</LinearLayout>
 
-	<ListView
-		android:layout_height="wrap_content"
-		android:layout_weight="0.1"
-		android:id="@+id/ListViewItemDetailComment"
+	<TextView
+		android:layout_height="100dp"
+		android:id="@+id/TextViewItemDetailsComments"
 		android:layout_width="fill_parent"
-		android:clickable="true" />
+		android:layout_margin="5dip"
+		android:layout_weight="0"
+		android:scrollbars = "vertical"/>
 
 	<LinearLayout android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical">
 
-		<TextView
+		<EditText
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="myComment"
-			android:id="@+id/myItemDetailComment" />
+			android:id="@+id/TextViewItemDetailMyComment"
+			android:editable="true"
+			android:hint="Comment here"/>
 
+		<RatingBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="bottom"
+			android:id="@+id/ratingBarYours"
+			android:stepSize="1.0" />
+
+
+
+	</LinearLayout>
+
+	<LinearLayout android:layout_width="match_parent"
+	              android:layout_height="wrap_content"
+	              android:orientation="horizontal"
+	              android:gravity="center" >
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="5dip"
+			android:layout_gravity="start"
+			android:id="@+id/btnItemDetailComment"
+			android:text="Comment" />
 
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="5dip"
 			android:layout_gravity="end"
-			android:id="@+id/btnItemDetailComment"
-			android:text="Comment" />
+			android:id="@+id/btnAddToCart"
+			android:text="Add to Cart" />
 
 	</LinearLayout>
-
-	<Button
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_margin="5dip"
-		android:layout_gravity="end"
-		android:id="@+id/btnAddToCart"
-		android:text="Add to Cart" />
 
 </LinearLayout>
