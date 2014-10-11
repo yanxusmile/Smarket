@@ -27,6 +27,7 @@ import java.util.List;
 public class CartFragment extends Fragment {
 
     private List<Item> mCartList;
+	private List<Item> mHistoryList;
     private ItemAdapter mItemAdapter;
 
     @Override
@@ -36,6 +37,7 @@ public class CartFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 
         mCartList = LocalData.getCart();
+	    mHistoryList = LocalData.getHistorylog();
 
         // Make sure to clear the selections
         for(int i=0; i<mCartList.size(); i++) {
@@ -80,6 +82,24 @@ public class CartFragment extends Fragment {
             }
         });
 
+
+	    Button checkoutButton = (Button) rootView.findViewById(R.id.btnCheckout);
+	    checkoutButton.setOnClickListener(new OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+			    // Loop through and checkout all the Items that are selected
+			    // Loop backwards so that the checkout works correctly
+			    for(int i=mCartList.size()-1; i>=0; i--) {
+
+				    if(mCartList.get(i).selected) {
+					    //add func to checkout item
+					    mHistoryList.add(mCartList.get(i));
+					    mCartList.remove(i);
+				    }
+			    }
+			    mItemAdapter.notifyDataSetChanged();
+		    }
+	    });
 //        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
 //                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
 //                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",

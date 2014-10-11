@@ -16,6 +16,9 @@ public class LocalData {
 	private static List<Item> catalog;
 	private static List<Item> cart;
 
+	private static List<Item> historylog;
+//	private static List<Item> cart;
+
 	public static List<Item> getCatalog(Resources res){
 		if(catalog == null) {
 			catalog = new Vector<Item>();
@@ -39,5 +42,12 @@ public class LocalData {
 		}
 
 		return cart;
+	}
+
+	public static List<Item> getHistorylog(){
+		if(historylog == null) {
+			historylog = new Vector<Item>();
+		}
+		return historylog;
 	}
 }
