@@ -80,21 +80,24 @@ public class LocalData
         return true;
     }
 
-    public static void addToCart(Item item)
+    public static void addToHistory(Item item)
     {
         try
         {
-            String itemList = httpUtil.doPost("http://10.0.2.2:8080/Server/DBServlet?Type=ItemList");
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("GUID", UUID.randomUUID().toString().toUpperCase());
+            jsonObject.put("UserID", 100);
+            jsonObject.put("ItemID", item.getItemID());
+
+            String itemList = httpUtil.doPost("http://10.0.2.2:8080/Server/DBServlet?Type=AddToHistory&Record=" + jsonObject.toString());
         }
         catch (JSONException e)
         {
             e.printStackTrace();
-            return false;
         }
         catch (Exception e)
         {
             e.printStackTrace();
-            return false;
         }
     }
 

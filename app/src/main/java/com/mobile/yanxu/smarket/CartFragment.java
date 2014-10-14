@@ -84,16 +84,19 @@ public class CartFragment extends Fragment {
 
 
 	    Button checkoutButton = (Button) rootView.findViewById(R.id.btnCheckout);
-	    checkoutButton.setOnClickListener(new OnClickListener() {
+	    checkoutButton.setOnClickListener(new OnClickListener()
+        {
 		    @Override
-		    public void onClick(View v) {
+		    public void onClick(View v)
+            {
 			    // Loop through and checkout all the Items that are selected
 			    // Loop backwards so that the checkout works correctly
-			    for(int i=mCartList.size()-1; i>=0; i--) {
-
-				    if(mCartList.get(i).selected) {
-					    //add func to checkout item
-					    mHistoryList.add(mCartList.get(i));
+			    for(int i = mCartList.size() - 1; i >= 0; i--)
+                {
+				    if(mCartList.get(i).selected)
+                    {
+                        LocalData.addToHistory(mCartList.get(i));
+	//				    mHistoryList.add(mCartList.get(i));
 					    mCartList.remove(i);
 				    }
 			    }
