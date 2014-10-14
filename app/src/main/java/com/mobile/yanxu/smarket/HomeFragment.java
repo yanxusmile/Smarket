@@ -18,7 +18,7 @@ import java.util.List;
 public class HomeFragment extends Fragment
 {
 //    private List<Item> mItemList;
-    ListView ListViewHome = null;
+    private ListView ListViewHome = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -74,7 +74,7 @@ public class ItemAdapter extends BaseAdapter
 
         Item curItem = mItemList.get(position);
 
-        item.ItemImageView.setImageDrawable(Drawable.createFromPath(curItem.getImage()));
+        item.ItemImageView.setImageDrawable(curItem.getDrawableImage());
         item.ItemName.setText(curItem.getName());
         item.ItemPrice.setText(String.valueOf(curItem.getPrice()));
 

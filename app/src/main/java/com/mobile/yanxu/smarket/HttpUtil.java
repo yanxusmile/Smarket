@@ -25,9 +25,9 @@ import java.util.ArrayList;
 
 public class HttpUtil
 {
-    public String doPost(String url)
+    public String doPost(String url, List<NameValuePair> params)
     {
-        HttpPost httpRequest = new HttpPost(url);
+  /*      HttpPost httpRequest = new HttpPost(url);
         String jsonString = null;
 
         try
@@ -44,12 +44,9 @@ public class HttpUtil
         }
 
         return jsonString;
-
-  /*      HttpPost httpRequest = new HttpPost(url);
+*/
+        HttpPost httpRequest = new HttpPost(url);
         String strResult = null;
-
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("Type", "ItemList"));
 
         try
         {
@@ -64,17 +61,17 @@ public class HttpUtil
         }
         catch (UnsupportedEncodingException e)
         {
-            System.out.println("yaorugang error" + e.getMessage());
+
         }
         catch (ClientProtocolException e)
         {
-            System.out.println("yaorugang error" + e.getMessage());
+
         }
         catch (IOException e)
         {
-            System.out.println("yaorugang error" + e.getMessage());
+
         }
 
-        return strResult;*/
+        return strResult;
     }
 }

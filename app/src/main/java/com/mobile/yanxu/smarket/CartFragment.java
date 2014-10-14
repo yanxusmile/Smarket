@@ -89,17 +89,24 @@ public class CartFragment extends Fragment {
 		    @Override
 		    public void onClick(View v)
             {
-			    // Loop through and checkout all the Items that are selected
-			    // Loop backwards so that the checkout works correctly
-			    for(int i = mCartList.size() - 1; i >= 0; i--)
+			    Thread t = new Thread(new Runnable()
                 {
-				    if(mCartList.get(i).selected)
+                    @Override
+                    public void run()
                     {
-                        LocalData.addToHistory(mCartList.get(i));
-	//				    mHistoryList.add(mCartList.get(i));
-					    mCartList.remove(i);
-				    }
-			    }
+                        for(int i = mCartList.size() - 1; i >= 0; i--)
+                        {
+                            if(mCartList.get(i).selected)
+                            {
+                                LocalData.addToHistory(mCartList.get(i));
+                                //				    mHistoryList.add(mCartList.get(i));
+                                mCartList.remove(i);
+                            }
+                        }
+                    }
+                });
+			    t.start();
+
 			    mItemAdapter.notifyDataSetChanged();
 		    }
 	    });
