@@ -3,6 +3,7 @@
     package="com.mobile.yanxu.smarket" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.mobile.yanxu.smarket.MyApplication"
