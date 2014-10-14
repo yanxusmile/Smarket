@@ -3,11 +3,15 @@ package com.mobile.yanxu.smarket;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -22,7 +26,29 @@ public class MeFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View rootView = inflater.inflate(R.layout.layout_my_info, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_me, container, false);
+
+	    final EditText userName = (EditText) rootView.findViewById(R.id.userName);
+	    final EditText password = (EditText) rootView.findViewById(R.id.password);
+	    final Button btnLogin = (Button) rootView.findViewById(R.id.btnLogin);
+
+	    btnLogin.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+			    String myName = userName.getText().toString();
+			    String myPassword= password.getText().toString();
+
+			    if () {
+				    Toast.makeText(getActivity(), "Successfully login", Toast.LENGTH_LONG).show();
+			    }else{
+				    Toast.makeText(getActivity(), "Wrong user name or password", Toast.LENGTH_LONG).show();
+			    }
+		    }
+	    });
+
+
+
+
 
 	    mHistoryList = LocalData.getHistoryLog();
 
