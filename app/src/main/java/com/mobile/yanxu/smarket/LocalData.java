@@ -132,6 +132,29 @@ public class LocalData
         return true;
     }
 
+    public static int Login(String username, String password)
+    {
+        int n = -1;
+
+        try
+        {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("Type", "Login"));
+            params.add(new BasicNameValuePair("Username", username));
+            params.add(new BasicNameValuePair("Password", password));
+
+            String code = httpUtil.doPost("http://10.0.2.2:8080/Server/DBServlet", params);
+
+            n = Integer.parseInt(code.trim());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return n;
+    }
+
     public static void addToHistory(Item item)
     {
         try

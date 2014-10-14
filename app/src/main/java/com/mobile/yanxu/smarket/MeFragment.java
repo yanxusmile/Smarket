@@ -23,31 +23,40 @@ public class MeFragment extends Fragment
     private ListView listViewPurchaseHistory;
 	private List<Item> mHistoryList;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.fragment_me, container, false);
 
-	    final EditText userName = (EditText) rootView.findViewById(R.id.userName);
-	    final EditText password = (EditText) rootView.findViewById(R.id.password);
-	    final Button btnLogin = (Button) rootView.findViewById(R.id.btnLogin);
 
-	    btnLogin.setOnClickListener(new View.OnClickListener() {
-		    @Override
-		    public void onClick(View v) {
-			    String myName = userName.getText().toString();
-			    String myPassword= password.getText().toString();
+        final EditText userName = (EditText) rootView.findViewById(R.id.userName);
+        final EditText password = (EditText) rootView.findViewById(R.id.password);
+        final Button btnLogin = (Button) rootView.findViewById(R.id.btnLogin);
 
-			    if (true) {
-				    Toast.makeText(getActivity(), "Successfully login", Toast.LENGTH_LONG).show();
-			    }else{
-				    Toast.makeText(getActivity(), "Wrong user name or password", Toast.LENGTH_LONG).show();
-			    }
-		    }
-	    });
+        btnLogin.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                final String myName = userName.getText().toString();
+                final String myPassword= password.getText().toString();
 
-
-
+                Thread t = new Thread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        int n = LocalData.Login(myName, myPassword);
+                        if (n != -1) {
+                            MyApplication.login = true;
+                            MyApplication.userID = n;
+                        }
+                    }
+                });
+                t.start();
+            }
+        });
 
 
 	    mHistoryList = LocalData.getHistoryLog();
@@ -59,8 +68,8 @@ public class MeFragment extends Fragment
 	    listViewPurchaseHistory.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
 		    @Override
-		    public void onItemClick(AdapterView<?> parent, View view, int position,
-		                            long id) {
+		    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
 			    Intent ItemDetailsIntent = new Intent( getActivity(),ItemDetailsActivity.class);
 			    ItemDetailsIntent.putExtra(LocalData.Item_INDEX, position);
 			    startActivity(ItemDetailsIntent);
@@ -74,6 +83,9 @@ public class MeFragment extends Fragment
 
     private void refresh()
     {
+        if (MyApplication.login == false)
+            return;
+
         Thread t = new Thread(new Runnable()
         {
             @Override
