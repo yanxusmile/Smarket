@@ -97,7 +97,7 @@ public class LocalData
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("Type", "ItemList"));
 
-            String itemList = httpUtil.doPost("http://10.0.2.2:8080/Server/DBServlet", params);
+            String itemList = httpUtil.doPost("http://10.9.174.249:8080/Server/DBServlet", params);
 
             JSONObject jsonObject = new JSONObject(itemList);
             JSONArray jsonArray = jsonObject.getJSONArray("Items");

@@ -38,7 +38,7 @@ public class MeFragment extends Fragment
 			    String myName = userName.getText().toString();
 			    String myPassword= password.getText().toString();
 
-			    if () {
+			    if (true) {
 				    Toast.makeText(getActivity(), "Successfully login", Toast.LENGTH_LONG).show();
 			    }else{
 				    Toast.makeText(getActivity(), "Wrong user name or password", Toast.LENGTH_LONG).show();
