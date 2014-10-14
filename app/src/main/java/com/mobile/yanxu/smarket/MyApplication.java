@@ -9,6 +9,8 @@ import android.content.Context;
 public class MyApplication extends Application
 {
     private static Context context;
+    public static boolean login = false;
+    public static int userID = -1;
 
     @Override
     public void onCreate()
