@@ -1,53 +1,141 @@
 package com.mobile.yanxu.smarket;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 import java.util.Vector;
+import org.json.*;
+import java.util.UUID;
 
-/**
- * Created by yanxu on 10/10/2014.
- */
-public class LocalData {
-
-
+public class LocalData
+{
 	public static final String Item_INDEX = "Item_INDEX";
 
-	private static List<Item> catalog;
-	private static List<Item> cart;
+	private static List<Item> catalog = new Vector<Item>();
+	private static List<Item> cart = new Vector<Item>();
+	private static List<Item> historyLog = new Vector<Item>();
 
-	private static List<Item> historylog;
-//	private static List<Item> cart;
+    private static HttpUtil httpUtil = new HttpUtil();
 
-	public static List<Item> getCatalog(Resources res){
-		if(catalog == null) {
-			catalog = new Vector<Item>();
-			catalog.add(new Item("Dead or Alive", res
-					.getDrawable(R.drawable.ic_launcher), 29.99,
-					"Dead or Alive by Tom Clancy with Grant Blackwood", "commenssssssssst1commensss" +
-					"sssssst1commenssssssssst1commenssssssssst1commenssssssssst1commenssssssssst1", 5, 1, 3.5));
-			catalog.add(new Item("Switch", res
-					.getDrawable(R.drawable.ic_launcher), 24.99,
-					"Switch by Chip Heath and Dan Heath", "comment2", 3, 1, 1.5));
-			catalog.add(new Item("Watchmen", res
-					.getDrawable(R.drawable.ic_launcher), 14.99,
-					"Watchmen by Alan Moore and Dave Gibbons", "comment3", 1, 4, 3));
-		}
+	public static List<Item> getCatalog(Resources res)
+    {
 		return catalog;
 	}
 
-	public static List<Item> getCart() {
-		if(cart == null) {
-			cart = new Vector<Item>();
-		}
-
+	public static List<Item> getCart()
+    {
 		return cart;
 	}
 
-	public static List<Item> getHistorylog(){
-		if(historylog == null) {
-			historylog = new Vector<Item>();
-		}
-		return historylog;
+	public static List<Item> getHistoryLog()
+    {
+		return historyLog;
 	}
+
+    public static boolean loadCatalog()
+    {
+        catalog.clear();
+
+        try
+        {
+            String itemList = httpUtil.doPost("http://10.0.2.2:8080/Server/DBServlet?Type=ItemList");
+
+            JSONObject jsonObject = new JSONObject(itemList);
+            JSONArray jsonArray = jsonObject.getJSONArray("Items");
+
+            int n = jsonArray.length();
+            for (int i = 0; i < n; i++)
+            {
+                Item item = new Item();
+                item.setItemID(jsonArray.getJSONObject(i).getInt("ItemID"));
+                item.setName(jsonArray.getJSONObject(i).getString("Name"));
+                item.setPrice(jsonArray.getJSONObject(i).getDouble("Price"));
+                item.setDescription(jsonArray.getJSONObject(i).getString("Description"));
+                item.setImage(jsonArray.getJSONObject(i).getString("Image"));
+
+                catalog.add(item);
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+
+        loadImageFromNetwork(catalog);
+
+        return true;
+    }
+
+    public static void addToCart(Item item)
+    {
+        try
+        {
+            String itemList = httpUtil.doPost("http://10.0.2.2:8080/Server/DBServlet?Type=ItemList");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private static void loadImageFromNetwork(List<Item> itemList)
+    {
+        for (int i = 0; i < itemList.size(); i++)
+        {
+            String imageUrl = itemList.get(i).getImage();
+
+            if(imageUrl == null || imageUrl.length() == 0)
+                continue;
+
+            String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
+
+            File file = new File(MyApplication.getContextObject().getCacheDir(), fileName);
+
+            if (!file.exists())
+            {
+                try
+                {
+                    FileOutputStream fos = new FileOutputStream(file);
+                    InputStream is = new URL(imageUrl).openStream();
+
+                    int data = is.read();
+                    while (data != -1)
+                    {
+                        fos.write(data);
+                        data = is.read();
+                    }
+
+                    fos.close();
+                    is.close();
+                }
+                catch (IOException e)
+                {
+                    continue;
+                }
+            }
+
+            itemList.get(i).setImage(file.toString());
+            itemList.get(i).setDrawableImage(Drawable.createFromPath(file.toString()));
+        }
+    }
 }

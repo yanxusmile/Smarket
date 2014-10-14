@@ -1,6 +1,7 @@
 package com.mobile.yanxu.smarket;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.method.ScrollingMovementMethod;
@@ -27,9 +28,9 @@ public class ItemDetailsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_item_detail_test);
+        setContentView(R.layout.layout_item_detail);
 
-	    mHistoryList = LocalData.getHistorylog();
+	    mHistoryList = LocalData.getHistoryLog();
 
         List<Item> catalog = LocalData.getCatalog(getResources());
         final List<Item> cart = LocalData.getCart();
@@ -39,16 +40,16 @@ public class ItemDetailsActivity extends Activity {
 
         // Set the proper image and text
         ImageView ItemImageView = (ImageView) findViewById(R.id.ImageViewItemDetail);
-        ItemImageView.setImageDrawable(selectedItem.itemImage);
+        ItemImageView.setImageDrawable(selectedItem.getDrawableImage());
 
         TextView ItemNameTextView = (TextView) findViewById(R.id.TextViewItemDetailName);
-        ItemNameTextView.setText(selectedItem.name);
+        ItemNameTextView.setText(selectedItem.getName());
 
         TextView ItemPriceTextView = (TextView) findViewById(R.id.TextViewItemDetailPrice);
-        ItemPriceTextView.setText(String.valueOf(selectedItem.price));
+        ItemPriceTextView.setText(String.valueOf(selectedItem.getPrice()));
 
         TextView ItemDetailsTextView = (TextView) findViewById(R.id.TextViewItemDetailsDescription);
-        ItemDetailsTextView.setText(selectedItem.description);
+        ItemDetailsTextView.setText(selectedItem.getDescription());
 
 	    RatingBar ratingBarItem = (RatingBar) findViewById(R.id.ratingItemDetailBar);
 	    // read rating

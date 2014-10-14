@@ -23,7 +23,7 @@ public class MeFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.layout_my_info, container, false);
 
-	    mHistoryList = LocalData.getHistorylog();
+	    mHistoryList = LocalData.getHistoryLog();
 
 	    // Create the list
 	    ListView listViewPurchaseHistory = (ListView) rootView.findViewById(R.id.listViewPurchaseHistory);

@@ -12,17 +12,19 @@ import java.util.Locale;
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
+public class SectionsPagerAdapter extends FragmentPagerAdapter
+{
     private Context mContext = null;
 
-    public SectionsPagerAdapter(FragmentManager fm, Context context) {
+    public SectionsPagerAdapter(FragmentManager fm, Context context)
+    {
         super(fm);
         mContext = context;
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Fragment getItem(int position)
+    {
         // getItem is called to instantiate the fragment for the given page.
         switch (position) {
             case 0:
