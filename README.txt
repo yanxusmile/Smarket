@@ -47,4 +47,9 @@ Group 7: Bei Liu(613792), Qingyang Hong(629379), Yanxu Zheng(575436), Rugang Yao
 
 2. Member responsibility
 	
+	Rugang Yao(561747): Integration of device side and server side; implementation of communication; debugging the whole system
 	Qingyang Hong(629379): Recommendation algorithm module, servlet-recommendation data module, database preparation.
+	Yanxu Zheng(575436): device-end main contributor; app architecture 
+	Bei Liu(613792): Project Manager, debugging and final testing
+
+
